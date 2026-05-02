@@ -1,10 +1,4 @@
-services:
-  ollama-intel-arc:
-    volumes:
-      - /mnt/ollama/ollama-data:/root/.ollama
-    networks:
-      - llm-internal
-      
+services:      
   whisper-ipex:
     volumes:
       - /mnt/ollama/whisper/models:/root/.cache/whisper
