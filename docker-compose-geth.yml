@@ -19,13 +19,6 @@ services:
     networks:
       - llm-internal
 
-  ollama-sycl:
-    volumes:
-      - /mnt/ollama/ollama-data:/root/.ollama
-      - /mnt/ollama/sycl-cache:/root/.cache
-    networks:
-      - llm-internal
-
   sdnext-ipex:
     volumes:
       - /mnt/ollama/sdnext/app:/app
