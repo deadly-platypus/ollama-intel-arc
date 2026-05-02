@@ -1,7 +1,7 @@
 services:
   ollama-intel-arc:
     volumes:
-      - /mnt/ollama:/root/.ollama
+      - /mnt/ollama/.ollama:/root/.ollama
     networks:
       - llm-internal
 
