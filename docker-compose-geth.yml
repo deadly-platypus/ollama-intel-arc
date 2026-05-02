@@ -15,7 +15,7 @@ services:
   comfyui-ipex:
     volumes:
       - /mnt/ollama/comfyui/app:/app
-      - /mnt/ollama/comfyui/python:/usr/local/lib/python3.19
+      - /mnt/ollama/comfyui/python:/usr/local/lib/python3.10
     networks:
       - llm-internal
 
