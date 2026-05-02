@@ -30,6 +30,11 @@ services:
       - llm-internal
 
   open-webui:
+    environment:
+      - WEBUI_AUTH=False
+      - ENABLE_OPENAI_API=True
+      - OPENAI_API_BASE_URL=http://litellm:4000/v1
+      - ENABLE_OLLAMA_API=False
     volumes:
       - /mnt/ollama/open-webui:/app/backend/data
     networks:
