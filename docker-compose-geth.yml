@@ -1,11 +1,16 @@
 services:
   ollama-intel-arc:
     volumes:
-      - /mnt/ollama/.ollama:/root/.ollama
+      - /mnt/ollama/ollama-data:/root/.ollama
     networks:
       - llm-internal
-
+  comfyui-ipex:
+    volumes:
+      - /mnt/ollama/comfyui/app:/app
+      - /mnt/ollama/comfyui/python:/usr/local/lib/python3.19
   open-webui:
+    volumes:
+      - /mnt/ollama/open-webui:/app/backend/data
     networks:
       - traefik_network
       - llm-internal
@@ -15,7 +20,7 @@ services:
       - "traefik.http.routers.open-webui.entrypoints=websecure"
       - "traefik.http.routers.open-webui.tls=true"
       - "traefik.http.services.open-webui.loadbalancer.server.port=8080"
-
+    
 networks:
   traefik_network:
     external: true
