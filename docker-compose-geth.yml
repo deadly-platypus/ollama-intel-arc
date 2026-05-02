@@ -1,0 +1,23 @@
+services:
+  ollama-intel-arc:
+    volumes:
+      - /mnt/ollama:/root/.ollama
+    networks:
+      - llm-internal
+
+  open-webui:
+    networks:
+      - traefik_network
+      - llm-internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.open-webui.rule=Host(`ai-chat.geth.systems`)"
+      - "traefik.http.routers.open-webui.entrypoints=websecure"
+      - "traefik.http.routers.open-webui.tls=true"
+      - "traefik.http.services.open-webui.loadbalancer.server.port=8080"
+
+networks:
+  traefik_network:
+    external: true
+  llm-internal:
+    external: true
