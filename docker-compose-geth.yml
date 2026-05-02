@@ -4,10 +4,37 @@ services:
       - /mnt/ollama/ollama-data:/root/.ollama
     networks:
       - llm-internal
+      
+  whisper-ipex:
+    volumes:
+      - /mnt/ollama/whisper/models:/root/.cache/whisper
+      - /mnt/ollama/whisper/whisper-files:/app
+    networks:
+      - llm-internal
+      
   comfyui-ipex:
     volumes:
       - /mnt/ollama/comfyui/app:/app
       - /mnt/ollama/comfyui/python:/usr/local/lib/python3.19
+    networks:
+      - llm-internal
+
+  ollama-sycl:
+    volumes:
+      - /mnt/ollama/ollama-data:/root/.ollama
+      - /mnt/ollama/sycl-cache:/root/.cache
+    networks:
+      - llm-internal
+
+  sdnext-ipex:
+    volumes:
+      - /mnt/ollama/sdnext/app:/app
+      - /mnt/ollama/sdnext/mnt:/mnt
+      - /mnt/ollama/sdnext/hugging-face:/root/.cache/huggingface
+      - /mnt/ollama/sdnext/python:/usr/local/lib/python3.10
+    networks:
+      - llm-internal
+
   open-webui:
     volumes:
       - /mnt/ollama/open-webui:/app/backend/data
