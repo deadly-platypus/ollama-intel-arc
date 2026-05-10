@@ -16,8 +16,7 @@ services:
   ollama-sycl:
     environment:
       - OLLAMA_KEEP_ALIVE=-1
-      - OLLAMA_MAX_LOADED_MODELS=1
-      - OLLAMA_NUM_PARALLEL=1
+      - OLLAMA_MAX_LOADED_MODELS=2
     volumes:
       - /mnt/ollama/ollama-data:/root/.ollama
       - /mnt/ollama/sycl-cache:/root/.cache
